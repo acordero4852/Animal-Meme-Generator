@@ -8,7 +8,7 @@
 
         <!--title-->
         <title>Zoo Meme Generator</title>
-        <link rel = "icon" href = "images/websiteIcon.ico" type = "image/ico"
+        <link rel = "icon" href = "icon/websiteIcon.ico" type = "image/ico"
 
         <!-- style changes-->
         <style type="text/css">
@@ -97,25 +97,30 @@
         <center>
             <!-- heading  -->
             <h2 style="background-color:#606c38; color: #132a13;"> &#129409 Zoo Meme Generator &#129409 </h2>
-            <h4  style = "color: #606c38;"> Create a zoo animal themed meme! Generate a random photo and edit the text. </h4>
-            <button id="download" class="button button1">Save </button><button type="button" onClick="refreshPage()" class="button button3">Reset</button>
+            <h4  style = "color: #606c38;"> Create a zoo animal themed meme! Choose an animal photo and edit the text. </h4>
+            <!-- <button id="download" class="button button1">Save </button>-->
+            <!--to add a save button when possible-->
+            <button type="button" onClick="reload()" class="button button3">Reset</button>
             <br>
             <br>
-            
+
             <script>
-            function refreshPage(){
+            function reload(){
             window. location. reload();
             }
             </script>
 
 
-
         <form style="color:#606c38; font-size: 20px"> 
             <b><p>&#9997 Meme text: <input type="text" id="user_text" maxlength="70" oninput="update_text()"><b><p>
-            <p><b>&#128247 Select a picture <input type="file" id="user_picture" onchange="update_image()"><b><p>
+            <p><b>&#128247 Animal photo: <input type="file" id="user_picture" onchange="update_image()"><b><p>
         </form>
+
+
         <div id="meme_text">Example text here</div>
         <div id="meme_picture"><img src="" height="500" width="600"></div>
+
+        
     </center>
     </body>
 </html>

@@ -8,6 +8,7 @@
 
         <!--title-->
         <title>Zoo Meme Generator</title>
+        <link rel = "icon" href = "images/websiteIcon.ico" type = "image/ico"
 
         <!-- style changes-->
         <style type="text/css">
@@ -22,6 +23,14 @@
                 position: absolute;
                 left: 15px;
                 top: 400px;
+                margin-top: 2%;
+                display: flex;
+                justify-content: space-between;
+                flex-basis: 32%;
+                border-radius: 10px;
+                margin-bottom: 30px;
+                position: relative;
+                overflow: hidden;
             }
         </style>
 
@@ -29,7 +38,7 @@
             .button
              {
                 border: none;
-                color: #dad7cd;
+                color: #132a13;
                 padding: 15px 32px;
                 text-align: center;
                 text-decoration: none;
@@ -37,11 +46,12 @@
                 font-size: 20px;
                 margin: 4px 2px;
                 cursor: pointer;
+                box-shadow: 0 9px #606c38;
              }
 
-             .button1 {background-color: #87986a;}
-             .button2 {background-color: #87986a;}
-             .button3 {background-color: #87986a;}
+             .button1 {background-color: #87986a;border-radius: 8px;}
+             .button2 {background-color: #87986a;border-radius: 8px;}
+             .button3 {background-color: #87986a;border-radius: 8px;}
          </style>
 
          <style>
@@ -50,6 +60,14 @@
                  background-color: #6a994e;
              }
          </style>
+
+        <style>
+        .button:active {
+          background-color: #6a994e;
+          box-shadow: 0 5px #132a13;
+         transform: translateY(4px);
+        }
+        </style>
 
          <link href='https://fonts.googleapis.com/css?family=Bevan' rel='stylesheet'>
          <style>
@@ -72,6 +90,7 @@
                 img.src = window.URL.createObjectURL(file);
             }
         </script>
+
     </head>
 
     <body style="background-color: #c9cba3;">
@@ -79,12 +98,21 @@
             <!-- heading  -->
             <h2 style="background-color:#606c38; color: #132a13;"> &#129409 Zoo Meme Generator &#129409 </h2>
             <h4  style = "color: #606c38;"> Create a zoo animal themed meme! Generate a random photo and edit the text. </h4>
-            <button onclick="editText()" class="button button1">Save </button><button type="reset" class="button button3">Reset</button>
+            <button id="download" class="button button1">Save </button><button type="button" onClick="refreshPage()" class="button button3">Reset</button>
             <br>
             <br>
-        <form style="color:#606c38;"> 
-            &#9997 Meme text: <input type="text" id="user_text" maxlength="70" oninput="update_text()"><p>
-            &#128247 Select a picture <input type="file" id="user_picture" onchange="update_image()"><p>
+            
+            <script>
+            function refreshPage(){
+            window. location. reload();
+            }
+            </script>
+
+
+
+        <form style="color:#606c38; font-size: 20px"> 
+            <b><p>&#9997 Meme text: <input type="text" id="user_text" maxlength="70" oninput="update_text()"><b><p>
+            <p><b>&#128247 Select a picture <input type="file" id="user_picture" onchange="update_image()"><b><p>
         </form>
         <div id="meme_text">Example text here</div>
         <div id="meme_picture"><img src="" height="500" width="600"></div>

@@ -1,121 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+
+        <!-- meta -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Funny Animals Meme Generator</title>
-        <style type="text/css">
-            body {
-                background-image: url("background.jpeg");
-                text-align: center;
-            }
-            form {
-                margin-left: 33em;
-                margin-right: 33em;
-                background-color: #ffffff;
-                border : 1em solid #000000;
-            }
-            p {
-                font-size: 25px;
-                font-family: "Impact";
-                color: #aaaaaa;
-            }
-            #meme_format {
-                position: relative;
-                margin-top: 2.5em;
-                margin-left: 32.5em;
-                border: 1em solid #000000;
-                height: 600px;
-                width: 600px;
-                
-            }
-            .btn {
-                color: #2196f3;
-                background: #ffffff;
-                border-color: #2196f3;
-                padding: 10px 20px;
-                border-radius: 6px;
-                border-width: 2px;
-                border-style: solid;
-                font-size: 20px;
-                font-family: 'Impact', sans-serif;
-                cursor: pointer;
-                transition: 0.25s ease;
-            }
-            .btn:hover span {
-                color: #2196f3;
-                background: #ffffff;
-            }
 
-            #meme_picture {
-                height: 600px;
+        <!--title-->
+        <title>Zoo Meme Generator</title>
+
+        <!-- style changes-->
+        <style type="text/css">
+            #meme_text 
+            {
+                background-color: transparent;
+                font-size: 40px;
+                font-family: "Impact";
+                color: white;
+                text-shadow: black 0px 0px 10px;
                 width: 600px;
-            }
-            #meme_text_top {
                 position: absolute;
-                font-size: 40px;
-                font-family: "Impact";
-                color: #ffffff;
-                -webkit-text-stroke: 2px #000000;
-                -moz-text-stroke: 2px #000000;
-                -o-text-stroke: 2px #000000;
-                -ms-text-stroke: 2px #000000;
-            }
-            #meme_text_bottom {
-                position: absolute;
-                font-size: 40px;
-                font-family: "Impact";
-                color: #ffffff;
-                -webkit-text-stroke: 2px #000000;
-                -moz-text-stroke: 2px #000000;
-                -o-text-stroke: 2px #000000;
-                -ms-text-stroke: 2px #000000;
+                left: 15px;
+                top: 400px;
             }
         </style>
-        <script type="text/javascript">
-            var img = document.getElementById("meme_picture");
 
-            function update_text_top() {
-                var user_text = document.getElementById("user_text_top");
-                var meme_text = document.getElementById("meme_text_top");
-                meme_text.innerHTML = user_text.value;
+        <style>
+            .button
+            {
+                border: none;
+                color: #dad7cd;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 20px;
+                margin: 4px 2px;
+                cursor: pointer;
             }
-            function update_text_bottom() {
-                var user_text = document.getElementById("user_text_bottom");
-                var meme_text = document.getElementById("meme_text_bottom");
+
+            .button1 {background-color: #87986a;}
+            .button2 {background-color: #87986a;}
+            .button3 {background-color: #87986a;}
+        </style>
+
+        <style>
+            button:hover 
+            {
+                background-color: #6a994e;
+            }
+        </style>
+
+        <link href='https://fonts.googleapis.com/css?family=Bevan' rel='stylesheet'>
+        <style>
+            body 
+            {
+                font-family: Verdana, sans-serif;font-size: 26px;
+            }
+        </style>
+
+        <!--javascript functions-->
+        <script type="text/javascript">
+            function update_text() {
+                var user_text = document.getElementById("user_text");
+                var meme_text = document.getElementById("meme_text");
                 meme_text.innerHTML = user_text.value;
             }
             function update_image() {
-                var img = document.getElementById("meme_picture");
-                var fs = require('fs');
-                var picture_files = fs.readdirSync('./picture/');
-                var randomNumber = Math.floor(Math.random()*picture_files.length);
-                var picture_name = "./picture/" + picture_files[randomNumber];
-                img.src = picture_name;
-            }
-            function download_image() {
-                var elmt = document.getelementById("meme_format");
-                domtoimage.toPng(elmt).then(function(dataUrl) {
-                    var img = new Image();
-                    img.src = dataUrl;
-                    document.body.appendChild(img);
-                }).catch(function(err) {
-                    console.error("Error downloading", err);
-                });
+                var img = document.querySelector('img');
+                var file = document.querySelector('input[type=file]').files[0];
+                img.src = window.URL.createObjectURL(file);
             }
         </script>
     </head>
-    <body>
-        <form> 
-            <p>Meme Text Top: <input type="text" id="user_text_top" oninput="update_text_top()"></p>
-            <p>Meme Text Bottom: <input type="text" id="user_text_bottom" oninput="update_text_bottom()"></p>
-            <p>Generate Animals Picture: <button class="btn" id="generate_button" onclick="update_image()">Generate</button></p>
-            <button class="btn" type="button" onclick="download_image();">Download Image</button></p>
+
+    <body style="background-color: #c9cba3;">
+        <center>
+            <!-- heading  -->
+            <h2 style="background-color:#606c38; color: #132a13;"> &#129409 Zoo Meme Generator &#129409 </h2>
+            <h4  style = "color: #606c38;"> Create a zoo animal themed meme! Generate a random photo and edit the text. </h4>
+            <button onclick="editText()" class="button button1">Save </button><button type="reset" class="button button3">Reset</button>
+            <br>
+            <br>
+        <form style="color:#606c38;"> 
+            &#9997 Meme text: <input type="text" id="user_text" maxlength="70" oninput="update_text()"><p>
+            &#128247 Select a picture <input type="file" id="user_picture" onchange="update_image()"><p>
         </form>
-        <div id="meme_format">
-            <div id="meme_text_top"></div>
-            <div id="meme_text_bottom"></div>
-            <img id="meme_picture" src="./picture/these-animals-just-love-to-make-silly-faces-15-pictures-1.jpeg" alt="">
-        </div>
+        <div id="meme_text">Example text here</div>
+        <div id="meme_picture"><img src="" height="500" width="600"></div>
+    </center>
     </body>
-</html>
+</html> 
